@@ -1,6 +1,25 @@
 (ns alfa.lib.one
   (:require
-    [cheshire.core :as cc]))
+    [cheshire.core :as cc]
+    [clojure.math.combinatorics :as combo]))
+
+;; USING CHESHIRE.CORE
+(defn toJSON [name age hobby]
+  (cc/generate-string {:name name :age age :hobby hobby}))
+
+(def useToJSON
+  (toJSON "Ferdi" 19 "Soccer"))
+
+(defn toClojure [jsonstring]
+  (cc/parse-string jsonstring true))
+
+;; USING MATH COMBINATORICS
+(defn permutation-contoh [n]
+  (combo/permutations (vec (range 1 (inc n)))))
+
+(defn pilih-n-dari [lst n]
+  (combo/combinations lst n))
+
 
 ;; CLOJURE VIDEO 7
 
